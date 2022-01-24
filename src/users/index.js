@@ -1,7 +1,12 @@
 const express = require('express');
 const app = express();
 const morgan=require('morgan');
-var vehiculos = require('./src/vehiculos');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+
+
+
 
 //Configuraciones
 app.set('port', process.env.PORT || 3000);
@@ -29,6 +34,9 @@ var con = mysql.createConnection({
   app.use(morgan('dev'));
   app.use(express.urlencoded({extended:false}));
   app.use(express.json());
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(cors());
   
   // Usuarios filtrados por ID
   
