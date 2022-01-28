@@ -7,6 +7,8 @@ const cors = require('cors');
 //Configuraciones
 app.set('port', process.env.PORT || 3000);
 app.set('json spaces', 2);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
@@ -32,8 +34,8 @@ var con = mysql.createConnection({
   
   // Usuarios filtrados por ID
   
-  app.get("/usuario", (req, res) => { 
-    const id = req.query.ID_Usuario;
+  app.get("/usuario/:idUsuario", (req, res) => { 
+    const id = req.params.idUsuario;
     const sql = "SELECT * from usuarios where ID_Usuario = "+id;
     con.query(sql, function (err, result) {
       if (err) throw err;
@@ -119,6 +121,59 @@ var con = mysql.createConnection({
     });
     
   });
+
+  // Información de un usuario y su lista de vehículos en la misma llamada filtrando por ID usuario
+
+  app.get("/info", (req, res) => { 
+    const id = req.query.id_usuario;
+    const sql = "select u.*, v.* from usuarios u join vehiculos v on u.ID_Usuario=v.id_usuario where u.ID_Usuario=" + id;
+
+    con.query(sql, function (err, result) {
+    if (err) throw err;
+
+      console.log("Result: " + JSON.stringify(result,null,2));
+
+      res.json(result);
+    });
+  });
+
+  // Información de un vehículo y su lista de servicios en la misma llamada filtrando por ID usuario
+
+  app.get("/infovehi", (req, res) => { 
+    const id = req.query.id_usuario;
+
+    const sql = "select v.*, s.* from vehiculos v join servicios s on v.ID_Vehiculo=s.ID_vehiculo where v.Id_usuario=" + id;
+
+    con.query(sql, function (err, result) {
+    if (err) throw err;
+
+      console.log("Result: " + JSON.stringify(result,null,2));
+
+      res.json(result);
+    });
+  });
+
+  // Modificar datos de un usuario
+
+
+  app.post("/modificarUsuario", (req, res) => { 
+    const id = req.body.id_usuario;
+    const nombre = req.body.nombre;
+    const telefono = req.body.telefono;
+    const email = req.body.email;
+
+    
+    const sql = "UPDATE usuarios SET Nombre = '"+nombre+"', Telefono ="+telefono+" , Email ='"+email+"' where ID_Usuario ="+id;
+
+    con.query(sql, function (err, result) {
+    if (err) throw err;
+
+      console.log("Result: " + JSON.stringify(result,null,2));
+
+      res.json(result);
+    });
+  });
+
 
 
 

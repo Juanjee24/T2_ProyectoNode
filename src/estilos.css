@@ -2,16 +2,20 @@ html{
     box-sizing: border-box;
 }
 body{
-    background-color: darkslategray;
+    background-image: url("/src/img/fondonegro.jpg");
+    
     
 
 }
 form{
-    background-color: brown;
+    background-color: rgba(165, 42, 42, 0.692);
     padding: 2rem;
     width: max-content;
-    box-shadow: 0px 0px 10px whitesmoke;
+    box-shadow: 0px 0px 5px whitesmoke;
     border-radius: 15px;
+    margin-left: 2rem;
+    
+   
     
    
 }
@@ -19,6 +23,7 @@ form h1{
     color: whitesmoke;
     font-weight: bold;
     font-family:'Roboto', sans-serif;
+    
 }
 label{
     font-size: 1.4rem;
@@ -29,7 +34,9 @@ label{
 input[type='text']{
     padding: 1rem;
     outline: none;
-    font-size: 2rem;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    border: none;
 }
 .campo{
     margin: 2rem 0;
@@ -45,9 +52,16 @@ input[type='text']{
     border: none;
     font-weight: bold;
     cursor: pointer;
+    width: 30%;
+    margin: 0 auto;
 }
 
 .contenedor_formularios{
     display: flex;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    
 }
+
