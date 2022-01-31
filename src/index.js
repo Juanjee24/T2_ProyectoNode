@@ -78,8 +78,8 @@ var con = mysql.createConnection({
   // seleccionar todos los servicios filtrando por el id servicio
 
 
-  app.get("/lista_servi", (req, res) => { 
-    const id = req.query.id_servicio;
+  app.get("/lista_servi/:idServicio", (req, res) => { 
+    const id = req.params.idServicio;
     const sql = "SELECT * from servicios where ID_Servicio = "+id;
     con.query(sql, function (err, result) {
       if (err) throw err;
@@ -109,8 +109,8 @@ var con = mysql.createConnection({
 
   // Vehiculos filtrados por ID de vehículo
 
-  app.get("/id_vehi", (req, res) => { 
-    const id = req.query.id_vehiculo;
+  app.get("/id_vehi/:idVehiculo", (req, res) => { 
+    const id = req.params.idVehiculo;
     const sql = "SELECT * from vehiculos where ID_Vehiculo = "+id;
     con.query(sql, function (err, result) {
       if (err) throw err;
@@ -124,8 +124,8 @@ var con = mysql.createConnection({
 
   // Información de un usuario y su lista de vehículos en la misma llamada filtrando por ID usuario
 
-  app.get("/info", (req, res) => { 
-    const id = req.query.id_usuario;
+  app.get("/info/:idusuario", (req, res) => { 
+    const id = req.params.idusuario;
     const sql = "select u.*, v.* from usuarios u join vehiculos v on u.ID_Usuario=v.id_usuario where u.ID_Usuario=" + id;
 
     con.query(sql, function (err, result) {
@@ -139,8 +139,8 @@ var con = mysql.createConnection({
 
   // Información de un vehículo y su lista de servicios en la misma llamada filtrando por ID usuario
 
-  app.get("/infovehi", (req, res) => { 
-    const id = req.query.id_usuario;
+  app.get("/infovehi/:idusuario", (req, res) => { 
+    const id = req.params.idusuario;
 
     const sql = "select v.*, s.* from vehiculos v join servicios s on v.ID_Vehiculo=s.ID_vehiculo where v.Id_usuario=" + id;
 

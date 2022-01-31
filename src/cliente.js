@@ -38,8 +38,7 @@ function llamada_vehiculo(id_vehi) {
     var inputMarca = formu.campo4;
     var inputModelo = formu.campo5;
     
-
-    fetch("http://localhost:3000/id_vehi?id_vehiculo="+id_vehi, {
+    fetch("http://localhost:3000/id_vehi/"+id_vehi, {
         method: 'GET',
         mode: 'cors',
         headers: {
@@ -63,6 +62,38 @@ function llamada_vehiculo(id_vehi) {
 
 }
 
+function llamada_servicio(id_servi) {
+
+    var usuario;  
+    var formu = document.forms[2];
+    var inputID_VEHI = formu.campo2;
+    var inputNombre_servi = formu.campo3;
+    var inputPrecio = formu.campo4;
+    var inputDescripcion = formu.campo5;
+    
+    fetch("http://localhost:3000/lista_servi/"+id_servi, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        console.log(data)
+        usuario = data[0];
+        //usuario_txt= document.createTextNode(usuario.Email)
+        inputID_VEHI.value=usuario.ID_vehiculo; 
+        inputNombre_servi.value=usuario.Nombre;
+        inputPrecio.value=usuario.Precio;
+        inputDescripcion.value=usuario.descripcion;
+
+    })
+}
+
 //muestra los datos del vehículo
 function mostrar_vehi() { 
     var formu = document.forms[1];
@@ -77,23 +108,48 @@ function mostrar_vehi() {
 
 }
 
-
-function mostrar() { //muestra los datos del usuario
+//muestra los datos del usuario
+function mostrar() { 
     var formu = document.forms[0];
 
     var input1 = formu.campo1.value;
+    var botonConsultar = formu.botonConsultar;
     if(validar_id(input1, formu)){
         console.log(input1);
         formu.campo1.style.border="none";
-        llamada_usuario(input1)
+        llamada_usuario(input1);
+        botonConsultar.disabled=false;
+
     }
 
+}
+
+//consultar vehiculos de un usuario
+function consultar_lista_vehiculos() {
+    var padre = document.createElement("div");
+    padre.className="padre";
+    var texto = document.createTextNode("Holaaaaaaaaaa");
+    padre.appendChild(texto);
+    document.body.appendChild(padre);
     
-    
-    
+
 }
 
 
+//Muestra los datos del servicio
+
+function mostrar_servicio() {
+    var formu = document.forms[2];
+    var id_servicio = formu.campo1.value;
+    if(validar_id(id_servicio,formu)){
+        formu.campo1.style.border="none";
+        llamada_servicio(id_servicio);
+    }
+}
+
+
+
+//Esta función es únicamente para validar que el usuario introduce un ID válido.
 function validar_id(id, formulario) {
 
     let formu = formulario;

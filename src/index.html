@@ -16,12 +16,12 @@
 </head>
 <body>
     <div class="contenedor_formularios">
-
+        <!-- Formulario para sacar información del usuario -->
         <form action="">
             <h1>Consultar información de usuario</h1>
             <div class="campo">
                 <label for="campo1">ID</label>
-                <input type="text" name="campo1" placeholder="Introduce ID aquí">
+                <input type="text" name="campo1" placeholder="Introduce ID de usuario aquí">
     
             </div>
             <div class="campo">
@@ -40,12 +40,15 @@
     
             </div>
     
-            <div class="campo">
+            <div class="campo campoBoton">
     
                 <input type="button" value="Mostrar" onclick="mostrar()" class="boton">
+                <input type="button" value="Consultar" class="boton" name="botonConsultar" onclick="consultar_lista_vehiculos()" disabled>
             </div>
     
         </form>
+
+        <!-- Formulario para consultar información del vehículo -->
         <form action="">
             <h1>Consultar información de Vehículo</h1>
             <div class="campo">
@@ -79,6 +82,41 @@
                 <input type="button" value="Mostrar" onclick="mostrar_vehi()" class="boton">
             </div>
     
+        </form>
+
+        <!-- Consultar información del servicio a través de su ID -->
+        <form action="">
+            <h1>Consultar información de Servicio</h1>
+            <div class="campo">
+                <label for="campo1">ID</label>
+                <input type="text" name="campo1" placeholder="Introduce el ID del servicio aquí">
+    
+            </div>
+            <div class="campo">
+                <label for="campo2">ID de Vehículo</label>
+                <input type="text" name="campo2" readonly>
+    
+            </div>
+            <div class="campo">
+                <label for="campo3">Nombre del servicio</label>
+                <input type="text" name="campo3" readonly>
+    
+            </div>
+            <div class="campo">
+                <label for="campo4">Precio</label>
+                <input type="text" name="campo4" readonly>
+    
+            </div>
+            <div class="campo">
+                <label for="campo5">Descripción</label>
+                <textarea name="campo5" readonly></textarea>
+    
+            </div>
+    
+            <div class="campo">
+    
+                <input type="button" value="Mostrar" onclick="mostrar_servicio()" class="boton">
+            </div>
         </form>
     </div>
 </body>
