@@ -94,6 +94,86 @@ function llamada_servicio(id_servi) {
     })
 }
 
+//Mostrar lista de todos los usuarios
+
+function listaUsuarios() {
+
+    var padre = document.querySelector(".usuarios");
+    var texto;
+    
+    fetch("http://localhost:3000/lista", {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        
+        console.log(data);
+
+        /*
+        console.log(data);
+        const contenedor = document.createElement('div');
+        contenedor.className = 'contenedorUsuario';
+        for(let datos of data){
+            
+            texto += "<hr>"
+            for(let datosInternos in datos){
+                if(datosInternos != 'Contraseña') texto += "<p>"+datosInternos+": "+datos[datosInternos]+"</p>"
+            }
+                // padre.innerHTML=texto;
+                
+                contenedor.innerHTML = texto
+        }
+        
+        document.querySelector('.usuarios').appendChild(contenedor)
+
+        */
+
+        for(let datos of data){
+            const contenedor = document.createElement('div');
+            contenedor.className = 'contenedorUsuario';
+            texto = "<hr>"
+            for(let datosInternos in datos){
+                if(datosInternos != 'Contraseña') texto += "<p>"+datosInternos+": "+datos[datosInternos]+"</p>"
+                // padre.innerHTML=texto;
+                contenedor.innerHTML = texto
+                document.querySelector('.usuarios').appendChild(contenedor)
+
+            }        
+        }
+        
+
+        
+
+        
+        // for (let campos in data) {
+        //     texto += "<hr>"
+        //     switch (campos) {
+        //         case "Contraseña":
+        //             texto = "";
+        //             break;
+            
+        //         default:
+        //             for (let datos in data[campos]) {
+        //                 texto += "<p>"+datos+": "+data[campos][datos]+"</p>"
+                        
+        //             }
+        //             break;
+        //         }
+        //         padre.innerHTML=texto;
+            
+        // }
+        
+
+    })
+}
+
 //muestra los datos del vehículo
 function mostrar_vehi() { 
     var formu = document.forms[1];
