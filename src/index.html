@@ -15,6 +15,8 @@
     </style>
 </head>
 <body>
+    
+    
     <div class="contenedor_formularios">
         <!-- Formulario para sacar información del usuario -->
         <form action="">
@@ -40,10 +42,8 @@
                 
             </div>
             
-            <div class="campo campoBoton">
-                
+            <div class="campo">
                 <input type="button" value="Mostrar" onclick="mostrar()" class="boton">
-                <input type="button" value="Consultar" class="boton" name="botonConsultar" onclick="consultar_lista_vehiculos()" disabled>
             </div>
             
         </form>
@@ -119,7 +119,9 @@
             </div>
         </form>
     </div>
-    <input type="button" value="Mostrar todos los usuarios" onclick="listaUsuarios()" class="boton">
+    <div class="cont_boton">
+        <input type="button" value="Mostrar todos los usuarios" onclick="listaUsuarios()" class="botonTodos">
+    </div>
     <div class="usuarios">
 
     </div>

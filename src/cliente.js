@@ -1,3 +1,13 @@
+window.onload=()=>{
+    var botonTodos = document.querySelector(".botonTodos");
+    botonTodos.addEventListener("click",(
+        
+    )=>{
+        botonTodos.style.borderTopLeftRadius="30px";
+        botonTodos.style.borderTopRightRadius="30px"
+    })
+}
+
 function llamada_usuario(id_usu){
 
     var usuario;

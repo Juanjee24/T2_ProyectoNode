@@ -44,11 +44,7 @@ input[type='text']{
     flex-direction: column;
 }
 
-.campoBoton{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
+
 
 .boton{
     background-color: royalblue;
@@ -59,7 +55,29 @@ input[type='text']{
     font-weight: bold;
     cursor: pointer;
     width: 35%;
+    margin: 0 auto;
     
+}
+
+.botonTodos{
+
+    background-color: royalblue;
+    color: whitesmoke;
+    font-size: 1.4rem;
+    padding: 1rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    
+    
+    
+    
+}
+.cont_boton{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 12rem;
+
 }
 
 .contenedor_formularios{
@@ -67,7 +85,8 @@ input[type='text']{
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
-    height: 100vh;
+    margin-top: 4rem;
+    
     
 }
 
@@ -104,6 +123,9 @@ p{
 
 .contenedorUsuario{
     margin: 2rem;
+    background-color:rgba(165, 42, 42, 0.692) ;
+    padding: 1rem;
+    border-radius: 15px;
     
 }
 
