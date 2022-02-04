@@ -1,10 +1,21 @@
 window.onload=()=>{
     var botonTodos = document.querySelector(".botonTodos");
-    botonTodos.addEventListener("click",(
-        
-    )=>{
+    var usuarios = document.querySelector(".usuarios");
+
+    botonTodos.addEventListener("click",()=>{
+
         botonTodos.style.borderTopLeftRadius="30px";
-        botonTodos.style.borderTopRightRadius="30px"
+        botonTodos.style.borderTopRightRadius="30px";
+
+        if(usuarios.innerHTML==""){
+            
+            listaUsuarios();
+        }
+        else{
+            usuarios.innerHTML="";
+            botonTodos.style.borderTopLeftRadius="0";
+            botonTodos.style.borderTopRightRadius="0";
+        }
     })
 }
 
