@@ -233,7 +233,6 @@ function consultar_lista_vehiculos() {
     padre.appendChild(texto);
     document.body.appendChild(padre);
     
-
 }
 
 
