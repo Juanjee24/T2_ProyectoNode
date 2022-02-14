@@ -129,5 +129,22 @@ p{
     
 }
 
+/*Estilos al boton enlace consultar mapas*/
+
+.linkk{
+    text-decoration: none;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family:'Roboto', sans-serif;
+    position: absolute;
+    left: 10rem;
+    background-color: royalblue;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+    top: 1.8rem;
+}
+
 
 

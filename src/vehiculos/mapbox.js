@@ -35,7 +35,7 @@ function llamada_vehiculo(id_vehi) {
         console.log(data)
         usuario = data[0];
         const mapp = new mapboxgl.Marker()
-        .setLngLat([usuario.Longitud, usuario.Latitud])
+        .setLngLat([usuario.Latitud, usuario.Longitud])
         .addTo(map);
         
     })
